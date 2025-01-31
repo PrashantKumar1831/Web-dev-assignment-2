@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog | Global Explorations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(rgba(45, 55, 72, 0.6), rgba(45, 55, 72, 0.6)), url('photo/backgroun.jpg') no-repeat center center/cover;
+            color: white;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Position logo in the top-left corner */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            height: auto;
+        }
+
+        /* Account info bar */
+        .account-bar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .account-bar:hover {
+            transform: scale(1.05); /* Gently scale up the user bar */
+            background: rgba(255, 255, 255, 0.1); /* Add a subtle white tint */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Increase shadow intensity */
+        }
+
+        .account-bar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .account-bar:hover img {
+            transform: rotate(15deg); /* Slight rotation effect on hover */
+        }
+
+        .account-bar span {
+            margin-left: 5px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+
+        nav {
+            background: linear-gradient(145deg, #072038, #23476a);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2a5d67;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #f59e0b;
+            transform: translateY(-5px);
+            border-bottom: 2px solid #f59e0b;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #0c2640, #34495e);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-bottom: 3px solid #f59e0b;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card:hover h3 {
+            color: #005fd2;
+        }
+
+        .card-content {
+            padding: 2rem;
+            background: transparent;
+            color: white;
+        }
+
+        .card-content h3 {
+            margin: 0 0 1rem;
+            font-size: 1.4rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: #dcdcdc;
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #000000;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 4px solid #2a5d67;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 60vh;
+            }
+
+            header h1 {
+                font-size: 2.4rem;
+            }
+
+            nav a {
+                margin: 0 15px;
+                font-size: 1rem;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Logo in the top-left corner -->
+        <img src="photo/logo.jpg" alt="Travel Blog Logo" class="logo">
+
+        <!-- Account bar in the top-right corner -->
+        <a href="user_credentials.html">
+            <div class="account-bar">
+                <img src="photo/user.png" alt="User Avatar">
+                <div>
+                    <strong>User</strong>
+                    <span>View Profile</span>
+                </div>
+            </div>
+        </a>
+
+        <h1>Global Travel Explorations</h1>
+    </header>
+
+    <nav>
+        <a href="#">HOME</a>
+        <a href="destinations.html">DESTINATIONS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="about.html">ABOUT</a>
+    </nav>
+
+    <section class="featured-destinations" style="background: #000;">
+        <h2>FEATURED DESTINATIONS</h2>
+        <div class="featured">
+            <div class="card">
+                <img src="photo/beach.jpg" alt="Destination 1">
+                <div class="card-content">
+                    <h3>Tropical Paradise</h3>
+                    <p>Explore pristine beaches, crystal-clear waters, and lush jungles in this unforgettable destination.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="photo/mountain.jpg" alt="Destination 2">
+                <div class="card-content">
+                    <h3>Mountain Getaway</h3>
+                    <p>Experience breathtaking views and exhilarating hikes in the heart of the mountains.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="photo/culture.jpg" alt="Destination 3">
+                <div class="card-content">
+                    <h3>Cultural Adventure</h3>
+                    <p>Immerse yourself in vibrant cultures, delicious cuisine, and rich history in this exciting location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-blog" style="background: #000;">
+        <h2>LATEST BLOGS</h2>
+        <div class="featured">
+            <div class="card">
+                <img src="photo/adventure.jpg" alt="Blog 1">
+                <div class="card-content">
+                    <h3>Top 10 Travel Tips</h3>
+                    <p>Discover essential travel tips to make your next journey smooth and enjoyable.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="photo/wildlife.jpg" alt="Blog 2">
+                <div class="card-content">
+                    <h3>Hidden Gems Around the World</h3>
+                    <p>Uncover lesser-known destinations that are sure to amaze and inspire.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="photo/budegt-travel.jpg" alt="Blog 3">
+                <div class="card-content">
+                    <h3>How to Travel on a Budget</h3>
+                    <p>Learn practical tips for exploring the world without breaking the bank.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #000;">
+        <p>&copy; 2025 Global Explorations. All rights reserved.</p>
+    </footer>
+</body>
+</html>

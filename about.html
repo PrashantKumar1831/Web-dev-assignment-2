@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background: #000000;
+        }
+
+        header {
+            background: url('photo/logo.jpg') no-repeat center center/cover; /* Set the logo as the background image */
+            color: white;
+            padding: 10vh 0; /* Added padding to make the header height responsive and fit the logo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            background-color: #2d3748; /* Optional fallback background color */
+        }
+
+        /* Animation for the header text */
+        @keyframes fadeInHeaderText {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        header h1 {
+            font-size: 3rem; /* Adjusted font size */
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 1; /* Ensure text is on top of the logo */
+            animation: fadeInHeaderText 1.5s ease-in-out; /* Apply the animation here */
+        }
+
+        nav {
+            background: linear-gradient(145deg, #072038, #23476a);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f59e0b;
+            transform: translateY(-5px);
+            border-bottom: 2px solid #f59e0b;
+        }
+
+        section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: auto;
+            background: #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeInSection 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInSection {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #f59e0b;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-container img {
+            width: 150px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInLogo 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+            color: #e5e7eb;
+            line-height: 1.8;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content p {
+            text-align: justify;
+            margin: 0 1rem;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 2px solid #f59e0b;
+            animation: fadeInFooter 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInFooter {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            header h1 {
+                font-size: 3rem;
+            }
+
+            .content img {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .content {
+                gap: 1.5rem;
+            }
+
+            .content img {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .content img {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="destinations.html">DESTINATIONS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="#">About</a>
+    </nav>
+
+    <section>
+        <h2>Who We Are :</h2>
+        <div class="content">
+            <img src="photo/team.jpg" alt="Our Team">
+            <p>Welcome to our travel blog, where wanderlust meets storytelling. We are a team of passionate explorers, adventurers, and writers who believe in the transformative power of travel. From serene beaches to bustling cities, from majestic mountains to cultural hubs, we aim to inspire you to embark on journeys that create unforgettable memories.</p>
+
+            <p>Our mission is to share authentic travel experiences, practical tips, and insider guides to help you navigate the world with ease. Whether you are a seasoned traveler or planning your first trip, our blog is your companion in discovering the beauty and diversity of our planet.</p>
+
+            <p>Thank you for being part of our journey. Let's explore the world together, one destination at a time!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Travel Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>

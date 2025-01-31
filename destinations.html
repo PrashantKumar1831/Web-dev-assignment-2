@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Destinations | Travel Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0; /* Light text for dark mode */
+            background: #121212; /* Dark background for the page */
+        }
+
+        /* Dark Mode Header Section with Background Image */
+        .destinations-header {
+            background: url('photo/\ background_header.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 0;
+            position: relative;
+            opacity: 0;
+            visibility: hidden;
+            animation: fadeInHeader 2s ease-out forwards;
+        }
+
+        .destinations-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .destinations-header p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            background-color: #1b61d0;
+            color: white;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #3498db;
+            transform: translateY(-5px);
+        }
+
+        /* Updated Navigation Bar */
+        nav {
+            background: linear-gradient(145deg, #072038, #23476a); /* Blue gradient */
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+        }
+
+        nav a {
+            color: #ffffff; /* White text for contrast */
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 15px;
+            margin: 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffe600; /* Yellow hover effect for contrast */
+            border-bottom: 2px solid #ffe600;
+            transform: translateY(-5px);
+        }
+
+        /* Featured Destinations Section */
+        #destinations {
+            background: #000000;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        #destinations h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2980b9;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #0f2c4a, #34495e);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-bottom: 3px solid #f59e0b;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card-content p {
+            color: #bdc3c7;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        @keyframes fadeInHeader {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                visibility: hidden;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="destinations-header">
+        <h1>Explore World Destinations</h1>
+        <p>Discover breathtaking locations across the globe</p>
+        <a href="#destinations" class="cta-button">Explore Now</a>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#destinations">Destinations</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <section id="destinations">
+        <h2>FEATURED DESTINATIONS</h2>
+        <div class="featured">
+            <!-- Your destination cards here -->
+            <div class="card">
+                <img src="photo/beach.jpg" alt="Beach">
+                <div class="card-content">
+                    <h3>Sunny Beaches</h3>
+                    <p>Explore the world's most stunning coastlines.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/mountain.jpg" alt="Mountains">
+                <div class="card-content">
+                    <h3>Majestic Mountains</h3>
+                    <p>Discover breathtaking mountain ranges.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/cities.jpg" alt="City">
+                <div class="card-content">
+                    <h3>Vibrant Cities</h3>
+                    <p>Experience the energy of global cities.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/forest.jpg" alt="Forest">
+                <div class="card-content">
+                    <h3>Mystic Forests</h3>
+                    <p>Wander through serene and magical woods.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/desert.jpg" alt="Desert">
+                <div class="card-content">
+                    <h3>Golden Deserts</h3>
+                    <p>Feel the calm and vastness of sandy landscapes.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/lake.jpg" alt="Lake">
+                <div class="card-content">
+                    <h3>Tranquil Lakes</h3>
+                    <p>Relax by crystal-clear waters and serene surroundings.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/waterfall.jpg" alt="Waterfall">
+                <div class="card-content">
+                    <h3>Majestic Waterfalls</h3>
+                    <p>Marvel at the beauty of cascading water.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/island.jpg" alt="Island">
+                <div class="card-content">
+                    <h3>Exotic Islands</h3>
+                    <p>Escape to secluded tropical paradises.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Travel Destinations. All rights reserved.</p>
+        <p>Contact: info@travelblog.com | Follow us on social media</p>
+    </footer>
+</body>
+</html>

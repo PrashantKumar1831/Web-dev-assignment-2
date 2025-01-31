@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog - Latest Posts</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #121212; /* Dark background for the page */
+            color: #e0e0e0; /* Light text for contrast */
+        }
+
+        header {
+            background: url(photo/travel-bg.jpg) no-repeat center center/cover; /* Updated gradient */
+            color: white;
+            height: 40vh; /* Reduced height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: linear-gradient(145deg, #072038, #23476a);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f59e0b;
+            transform: translateY(-5px);
+            border-bottom: 2px solid #f59e0b;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+            background: #121212; /* Black background for the section */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInSection 1.5s ease-in-out;
+            color: white;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        @keyframes fadeInSection {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            border-bottom: 3px solid #f59e0b;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            animation: fadeInTitle 1.5s ease-in-out;
+            z-index: 2;
+            position: relative;
+        }
+
+        @keyframes fadeInTitle {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Featured Blog Cards */
+        .featured {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            z-index: 2;
+            position: relative;
+            animation: fadeInCards 2s ease-in-out;
+        }
+
+        @keyframes fadeInCards {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: linear-gradient(145deg, #0a2037, #34495e); /* Dark gradient for the cards */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInCard 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInCard {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-bottom: 3px solid #f59e0b;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0; /* Light text for contrast */
+            transition: color 0.3s ease;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #bdc3c7; /* Slightly lighter gray text for readability */
+            line-height: 1.6;
+        }
+
+        .card:hover h3 {
+            color: #005fd2; /* Accent blue for hover effect */
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 2px solid #f59e0b;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .featured {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
+            .card h3 {
+                font-size: 1.6rem;
+            }
+
+            .card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .featured {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .card h3 {
+                font-size: 1.4rem;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .featured {
+                grid-template-columns: 1fr;
+            }
+
+            .card h3 {
+                font-size: 1.4rem;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Travel Blog</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <section id="blog">
+        <h2>Latest Blog Posts</h2>
+        <div class="featured">
+            <div class="card">
+                <img src="photo/adventure.jpg" alt="Adventure">
+                <div class="card-content">
+                    <h3>Top 5 Adventures</h3>
+                    <p>Unforgettable experiences for thrill-seekers.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/culture.jpg" alt="Culture">
+                <div class="card-content">
+                    <h3>Cultural Journeys</h3>
+                    <p>Immerse yourself in diverse traditions.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/food.jpg" alt="Food">
+                <div class="card-content">
+                    <h3>Global Cuisines</h3>
+                    <p>Indulge in mouthwatering dishes from around the world.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="photo/wildlife.jpg" alt="Wildlife">
+                <div class="card-content">
+                    <h3>Wildlife Encounters</h3>
+                    <p>Get up close with nature's most fascinating creatures.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="photo/budegt-travel.jpg" alt="Blog 3">
+                <div class="card-content">
+                    <h3>How to Travel on a Budget</h3>
+                    <p>Learn practical tips for exploring the world without breaking the bank.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Travel Blog. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
